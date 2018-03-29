@@ -1,0 +1,17 @@
+{
+  "name": "roseslive-api",
+  "version": "0.0.1",
+  "description": "Roseslive GraphQL backend",
+  "main": "src/app.js",
+  "author": "LA1TV",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "dependencies": {
+    "ascii-art": "^1.4.3",
+    "microframework": "^0.6.4",
+    "typescript": "^2.8.1"
+  }
+}
