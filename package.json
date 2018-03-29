@@ -10,8 +10,12 @@
     "start": "node dist/app.js"
   },
   "dependencies": {
+    "@types/koa": "^2.0.44",
+    "@types/winston": "^2.3.8",
     "ascii-art": "^1.4.3",
+    "koa": "^2.5.0",
     "microframework": "^0.6.4",
-    "typescript": "^2.8.1"
+    "typescript": "^2.8.1",
+    "winston": "^2.4.1"
   }
 }
