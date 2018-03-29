@@ -1,5 +1,5 @@
 import {MicroframeworkSettings} from "microframework";
 
-export function expressLoader(settings: MicroframeworkSettings) {
+export function koaLoader(settings: MicroframeworkSettings) {
 
 }
