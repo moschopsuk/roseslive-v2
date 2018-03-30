@@ -3,7 +3,6 @@ import * as winston from 'winston';
 
 export class Logger {
     public static DEFAULT_SCOPE = 'app';
-    private scope: string;
 
     private static parsePathToScope(filepath: string): string {
         if (filepath.indexOf(path.sep) >= 0) {
@@ -17,9 +16,7 @@ export class Logger {
         return filepath;
     }
 
-    private formatScope(): string {
-        return `[${this.scope}]`;
-    }
+    private scope: string;
 
     constructor(scope?: string) {
         this.scope = Logger.parsePathToScope((scope) ? scope : Logger.DEFAULT_SCOPE);
@@ -47,5 +44,9 @@ export class Logger {
         if (winston) {
             winston.error(`${this.formatScope()} ${message}`, args);
         }
+    }
+
+    private formatScope(): string {
+        return `[${this.scope}]`;
     }
 }

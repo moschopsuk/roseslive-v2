@@ -6,7 +6,6 @@
     "tasks": [
         {
             "label": "build",
-            "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -14,7 +13,9 @@
         },
         {
             "label": "start",
-            "problemMatcher": []
         },
+        {
+            "label": "test",
+        }
     ]
 }

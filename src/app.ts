@@ -1,18 +1,17 @@
-import {bootstrapMicroframework} from "microframework";
-
-import { winstonLoader } from './loaders/winstonLoader';
+import {bootstrapMicroframework} from 'microframework';
 import { koaLoader } from './loaders/koaLoader';
+import { winstonLoader } from './loaders/winstonLoader';
 
 bootstrapMicroframework({
     config: {
-        logo: "RosesLive",
+        bootstrapTimeout: 10,
+        logo: 'RosesLive',
         showBootstrapTime: true,
-        bootstrapTimeout: 10
     },
     loaders: [
         winstonLoader,
-        koaLoader
-    ]
+        koaLoader,
+    ],
 })
-    .then(() => console.log("Application is up and running."))
-    .catch(error => console.log("Application is crashed: " + error));
+    .then(() => console.log('Application is up and running.'))
+    .catch((error) => console.log(`Application is crashed: ${error}`));
