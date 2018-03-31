@@ -1,6 +1,7 @@
 import {bootstrapMicroframework} from 'microframework';
 import 'reflect-metadata';
 import { Logger } from './core/Logger';
+import { graphqlLoader } from './loaders/graphqlLoader';
 import { iocLoader } from './loaders/iocLoader';
 import { koaLoader } from './loaders/koaLoader';
 import { typeormLoader } from './loaders/typeormLoader';
@@ -19,6 +20,7 @@ bootstrapMicroframework({
         iocLoader,
         typeormLoader,
         koaLoader,
+        graphqlLoader,
     ],
 })
     .then(() => log.info('Application is up and running.'))

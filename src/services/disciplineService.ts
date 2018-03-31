@@ -14,8 +14,9 @@ export class DisciplineService {
         this.log = new Logger(__filename);
     }
 
-    public find(): Promise<Discipline[]> {
-        this.log.info('Find all disciplines');
+    public getAll(): Promise<Discipline[]> {
+        this.log.info('fetching all disciplines');
         return this.disciplineRepository.find();
     }
+
 }
