@@ -6,7 +6,7 @@ import { Query } from './types/query';
 
 const schemaDefinition = `
     schema {
-        query    : Query
+        query : Query
     }
 `;
 

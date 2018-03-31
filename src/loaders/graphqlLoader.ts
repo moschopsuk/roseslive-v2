@@ -11,7 +11,7 @@ export const graphqlLoader: MicroframeworkLoader = (settings: MicroframeworkSett
     if (settings) {
         const app: Koa = settings.getData('koa_app');
         const routes = new Router();
-        const disciplineService = Container.get(DisciplineService);
+        const disciplineService = Container.get<DisciplineService>(DisciplineService);
         const graphQlOpts = graphqlKoa({
             context: {
                 disciplineService,
