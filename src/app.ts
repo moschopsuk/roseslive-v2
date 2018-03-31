@@ -17,8 +17,8 @@ bootstrapMicroframework({
     loaders: [
         winstonLoader,
         iocLoader,
-        koaLoader,
         typeormLoader,
+        koaLoader,
     ],
 })
     .then(() => log.info('Application is up and running.'))
