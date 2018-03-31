@@ -14,6 +14,5 @@ export const koaLoader: MicroframeworkLoader = (settings: MicroframeworkSettings
 
         settings.setData('koa_app', app);
         settings.setData('server', server);
-        settings.onShutdown(() => server.close());
     }
 };
