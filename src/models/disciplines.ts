@@ -10,13 +10,4 @@ export class Discipline {
 
     @Column()
     public description!: string;
-
-    @Column()
-    public fileName!: string;
-
-    @Column()
-    public views!: number;
-
-    @Column()
-    public isPublished!: boolean;
 }

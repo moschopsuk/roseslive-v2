@@ -12,6 +12,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "dependencies": {
+    "@types/graphql": "^0.12.7",
     "@types/koa": "^2.0.44",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-router": "^7.0.27",
@@ -19,6 +20,7 @@
     "apollo-server-koa": "^1.3.4",
     "ascii-art": "^1.4.3",
     "graphql": "^0.13.2",
+    "graphql-tools": "^2.23.1",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
