@@ -1,6 +1,6 @@
 export default {
     Query: {
-        async disciplines(parent, args, ctx, info) {
+        async disciplines(_, args, ctx, info) {
             const service = ctx.disciplineService;
             return await service.getAll();
         },
