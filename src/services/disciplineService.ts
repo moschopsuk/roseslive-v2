@@ -19,4 +19,8 @@ export class DisciplineService {
         return this.disciplineRepository.find();
     }
 
+    public find(id: string): Promise<Discipline | undefined> {
+        this.log.info(`fetching discipline ${id}`);
+        return this.disciplineRepository.findOneById(id);
+    }
 }
