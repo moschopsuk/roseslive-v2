@@ -1,17 +1,17 @@
 import { Service } from 'typedi';
 import { OrmRepository } from 'typeorm-typedi-extensions';
+import { ILoggerInterface, LogInjector } from '../core/logger';
 import { Logger } from '../core/logger';
 import { Discipline } from '../models/disciplines';
-import { DisciplineRepository } from '../repositories/disciplineRepositories';
+import { DisciplineRepository } from '../repositories/disciplineRepository';
 
 @Service()
 export class DisciplineService {
-    private log: Logger;
 
     constructor(
         @OrmRepository() private disciplineRepository: DisciplineRepository,
+        @LogInjector(__filename) private log: ILoggerInterface,
     ) {
-        this.log = new Logger(__filename);
     }
 
     public getAll(): Promise<Discipline[]> {
@@ -20,8 +20,12 @@ export class DisciplineService {
     }
 
     public find(id: string): Promise<Discipline | undefined> {
+        if (id === '') {
+            return Promise.reject(new Error('Unable to search with blank ID'));
+        }
+
         this.log.info(`fetching discipline ${id}`);
-        return this.disciplineRepository.findOneById(id);
+        return this.disciplineRepository.findOne(id);
     }
 
     public async create(discipline: Discipline): Promise<Discipline> {
@@ -30,13 +34,27 @@ export class DisciplineService {
     }
 
     public update(id: string, discipline: Discipline): Promise<Discipline> {
+        if (id === '') {
+            throw new Error(`Empty ID provided`);
+        }
+
         this.log.info(`Updated discipline: ${id}`);
         discipline.id = id;
         return this.disciplineRepository.save(discipline);
     }
 
-    public delete(id: string): Promise<void> {
+    public async Delete(id: string): Promise<Discipline | undefined> {
+        if (id === '') {
+            throw new Error(`Empty ID provided`);
+        }
+
+        const toDelete = this.disciplineRepository.findOne(id);
+        if (!toDelete) {
+            throw new Error(`Discipline ${id} not found`);
+        }
+
         this.log.info(`Deleted discipline: ${id}`);
-        return this.disciplineRepository.removeById(id);
+        await this.disciplineRepository.delete(id);
+        return toDelete;
     }
 }

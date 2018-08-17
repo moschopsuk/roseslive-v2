@@ -1,7 +1,15 @@
 import * as path from 'path';
+import Container from 'typedi';
 import * as winston from 'winston';
 
-export class Logger {
+export interface ILoggerInterface {
+    debug(message: string, ...args: any[]): void;
+    info(message: string, ...args: any[]): void;
+    warn(message: string, ...args: any[]): void;
+    error(message: string, ...args: any[]): void;
+}
+
+export class Logger implements ILoggerInterface {
     public static DEFAULT_SCOPE = 'app';
 
     private static parsePathToScope(filepath: string): string {
@@ -49,4 +57,11 @@ export class Logger {
     private formatScope(): string {
         return `[${this.scope}]`;
     }
+}
+
+export function LogInjector(scope: string): any {
+    return (object: any, propertyName: string, index?: number): any => {
+        const logger = new Logger(scope);
+        Container.registerHandler({ object, propertyName, index, value: () => logger });
+    };
 }

@@ -1,6 +1,8 @@
 import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework';
 import { createConnection } from 'typeorm';
 import { Discipline } from '../models/disciplines';
+import { Fixture } from '../models/fixture';
+import { Location } from '../models/location';
 
 export const typeormLoader: MicroframeworkLoader = async (settings: MicroframeworkSettings | undefined) => {
 
@@ -8,6 +10,8 @@ export const typeormLoader: MicroframeworkLoader = async (settings: Microframewo
         database: 'roseslive',
         entities: [
             Discipline,
+            Fixture,
+            Location,
         ],
         host: 'localhost',
         password: 'password',

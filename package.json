@@ -8,7 +8,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/app.js",
-    "test": "jest",
+    "test": "mocha --require ts-node/register test/**/*.spec.ts",
+    "watch:test": "mocha --require ts-node/register --watch test/**/*.spec.ts --watch-extensions ts",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "dependencies": {
@@ -27,27 +28,21 @@
     "microframework": "^0.6.4",
     "pg": "^7.4.1",
     "typedi": "^0.7.2",
-    "typeorm": "^0.1.19",
+    "typeorm": "^0.2.6",
     "typeorm-typedi-extensions": "^0.2.0",
     "typescript": "^2.8.1",
     "winston": "^2.4.1"
   },
   "devDependencies": {
-    "@types/jest": "^22.2.2",
-    "jest": "^22.4.3",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/faker": "^4.1.2",
+    "@types/mocha": "^5.0.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "faker": "^4.1.0",
+    "mocha": "^5.0.5",
+    "testdouble": "^3.7.0",
+    "ts-node": "^5.0.1",
     "tslint": "^5.9.1"
-  },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/tests/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json"
-    ],
-    "testEnvironment": "node"
   }
 }

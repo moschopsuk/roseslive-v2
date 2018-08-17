@@ -26,7 +26,7 @@ export const resolvers = {
 
         async deleteDisciple(root, { id }, ctx) {
             const service = (ctx.disciplineService as DisciplineService);
-            await service.delete(id);
+            await service.Delete(id);
             return id;
         },
     },
